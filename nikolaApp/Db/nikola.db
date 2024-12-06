@@ -1,0 +1,123 @@
+# Record to query running status (bi)
+
+record(bi, "$(device):Status") {
+    field(DESC, "Running Status")
+    field(DTYP, "stream")
+    field(INP, "@nikola.proto RunStatus $(port)")
+    field(ZNAM, "STOPPED")
+    field(ONAM, "RUNNING")
+}
+
+# Record to query current temperature (ai)
+record(ai, "$(device):CurrentTemp") {
+    field(DESC, "Current Temperature")
+    field(DTYP, "stream")
+    field(INP, "@nikola.proto CurrentTemperature $(port)")
+}
+
+# Record to query set temperature (ai)
+record(ai, "$(device):SetTemp") {
+    field(DESC, "Set Temperature")
+    field(DTYP, "stream")
+    field(INP, "@nikola.proto SetTemperature $(port)")
+}
+
+# Record to set the temperature (ao)
+record(ao, "$(device):SetTempControl") {
+    field(DESC, "Set Temperature Control")
+    field(DTYP, "stream")
+    field(OUT, "@nikola.proto SetTemperatureValue $(port)")
+}
+
+# Record to restart the device (bo)
+record(bo, "$(device):Restart") {
+    field(DESC, "Restart Device")
+    field(DTYP, "stream")
+    field(OUT, "@nikola.proto Restart $(port)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+# Record to run or stop the device (bo)
+record(bo, "$(device):RunStop") {
+    field(DESC, "Run/Stop Device")
+    field(DTYP, "stream")
+    field(OUT, "@nikola.proto RunStop $(port)")
+    field(ZNAM, "STOP")
+    field(ONAM, "RUN")
+}
+
+# chillerApp.db
+
+# Define an mbbiDirect record to read the full chiller status
+record(mbbiDirect, "$(device):ChillerStatus") {
+    field(DESC, "Chiller Status")
+    field(DTYP, "stream")
+    field(INP, "@nikola.proto ChillerStatus $(port)")
+}
+
+# Define bi records to read and decode each bit of the status
+
+record(bi, "$(device):ChillerRunning") {
+    field(DESC, "Chiller Running")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerStatus.B0")
+    field(ZNAM, "STOPPED")
+    field(ONAM, "RUNNING")
+}
+
+record(bi, "$(device):RemoteOrLocal") {
+    field(DESC, "Remote or Local")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerStatus.B1")
+    field(ZNAM, "LOCAL")
+    field(ONAM, "REMOTE")
+}
+
+record(bi, "$(device):ChillerReady") {
+    field(DESC, "Chiller Ready")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerStatus.B2")
+    field(ZNAM, "NOTREADY")
+    field(ONAM, "READY")
+}
+
+record(bi, "$(device):TempLowAlarm") {
+    field(DESC, "Temp Low Alarm")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerStatus.B3")
+    field(ZNAM, "Normal")
+    field(ONAM, "Temp<SP-WIDTH")
+}
+
+record(bi, "$(device):TempHighAlarm") {
+    field(DESC, "Temp High Alarm")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerStatus.B4")
+    field(ZNAM, "Normal")
+    field(ONAM, "Temp>SP+WIDTH")
+}
+
+record(bi, "$(device):HeatingOrCooling") {
+    field(DESC, "Heating or Cooling")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerStatus.B5")
+    field(ZNAM, "COOLING")
+    field(ONAM, "HEATING")
+}
+
+record(bi, "$(device):SystemWarning") {
+    field(DESC, "System Warning")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerStatus.B6")
+    field(ZNAM, "NONE")
+    field(ONAM, "WARNING")
+}
+
+record(bi, "$(device):SystemAlarm") {
+    field(DESC, "System Alarm")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerStatus.B7")
+    field(ZNAM, "NONE")
+    field(ONAM, "ALARM")
+}

@@ -1,0 +1,50 @@
+# nikola.proto
+# The device can only handle two queries per second
+
+Terminator = 0x0D;
+
+# Protocol for querying the running status
+protocol RunStatus {
+    wait 1000;
+    out "RUN?";
+    in "%{RUNNING|STOPPED}";
+}
+
+# Protocol for querying the current temperature
+protocol CurrentTemperature {
+    wait 1000;
+    out "TEMP?";
+    in "%f";
+}
+
+# Protocol for querying the set temperature
+protocol SetTemperature {
+    wait 1000;
+    out "SETTEMP?";
+    in "%f";
+}
+
+# Protocol for setting the temperature
+protocol SetTemperatureValue {
+    wait 1000;
+    out "SETTEMP %f";
+}
+
+# Protocol for restarting the device
+protocol Restart {
+    wait 1000;
+    out "RESTART";
+}
+
+# Protocol for running and stopping the device
+protocol RunStop {
+    wait 1000;
+    out "%{STOP|RUN}";
+}
+
+# Protocol for querying the chiller status
+protocol ChillerStatus {
+    wait 500;
+    out "STAT1A?";
+    in "%i";
+}
