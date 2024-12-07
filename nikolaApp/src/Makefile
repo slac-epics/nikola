@@ -16,7 +16,7 @@ LIBRARY_IOC += nikola
 DBD += nikola.dbd
 
 # specify all source files to be compiled and added to the library
-#nikola_SRCS += xxx
+nikola_SRCS += nikola.c
 
 nikola_LIBS += $(EPICS_BASE_IOC_LIBS)
 
