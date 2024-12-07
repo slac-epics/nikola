@@ -1,3 +1,23 @@
+# EPICS specific
+*~
+O.*
+*.log
+*.swp
+*.swo
+bin/
+cfg/
+db/
+dbd/
+display/
+html/
+include/
+lib/
+templates/
+envPaths
+RELEASE_SITE
+archive/
+autosave/
+
 # Prerequisites
 *.d
 
