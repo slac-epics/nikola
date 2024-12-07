@@ -48,3 +48,9 @@ protocol ChillerStatus {
     out "STAT1A?";
     in "%i";
 }
+
+protocol ChillerFaults {
+    wait 500;
+    out "FLTS1A?";
+    in "%i";
+}

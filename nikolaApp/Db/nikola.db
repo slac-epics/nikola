@@ -121,3 +121,100 @@ record(bi, "$(device):SystemAlarm") {
     field(ZNAM, "NONE")
     field(ONAM, "ALARM")
 }
+
+# Define an mbbiDirect record to read the full chiller faults
+record(mbbiDirect, "$(device):ChillerFaults") {
+    field(DESC, "Chiller Faults")
+    field(DTYP, "stream")
+    field(INP, "@nikola.proto ChillerFaults $(port)")
+}
+
+# Define bi records to read and decode each bit of the faults
+
+record(bi, "$(device):RTDFault") {
+    field(DESC, "RTD Fault")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerFaults.B0")
+    field(ZNAM, "OK")
+    field(ONAM, "FAULT")
+}
+
+record(bi, "$(device):TankLevelLow") {
+    field(DESC, "Tank Level Low")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerFaults.B1")
+    field(ZNAM, "OK")
+    field(ONAM, "FAULT")
+}
+
+record(bi, "$(device):VFDFault") {
+    field(DESC, "VFD Fault")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerFaults.B2")
+    field(ZNAM, "OK")
+    field(ONAM, "FAULT")
+}
+
+record(bi, "$(device):RTDAlarmWidth") {
+    field(DESC, "RTD < > Alarm Width")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerFaults.B4")
+    field(ZNAM, "OK")
+    field(ONAM, "FAULT")
+}
+
+record(bi, "$(device):TankLevelEmpty") {
+    field(DESC, "Tank Level Empty")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerFaults.B5")
+    field(ZNAM, "OK")
+    field(ONAM, "FAULT")
+}
+
+record(bi, "$(device):CoolantFlowLow") {
+    field(DESC, "Coolant Flow Low")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerFaults.B7")
+    field(ZNAM, "OK")
+    field(ONAM, "FAULT")
+}
+
+record(bi, "$(device):CoolantFlowHigh") {
+    field(DESC, "Coolant Flow High")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerFaults.B8")
+    field(ZNAM, "OK")
+    field(ONAM, "FAULT")
+}
+
+record(bi, "$(device):PCWFlowLow") {
+    field(DESC, "PCW Flow Low")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerFaults.B9")
+    field(ZNAM, "OK")
+    field(ONAM, "FAULT")
+}
+
+record(bi, "$(device):ResistivityHigh") {
+    field(DESC, "Resistivity High")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerFaults.B11")
+    field(ZNAM, "OK")
+    field(ONAM, "FAULT")
+}
+
+record(bi, "$(device):ResistivityLow") {
+    field(DESC, "Resistivity Low")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerFaults.B12")
+    field(ZNAM, "OK")
+    field(ONAM, "FAULT")
+}
+
+record(bi, "$(device):PressureSensor") {
+    field(DESC, "Pressure Sensor Fault")
+    field(DTYP, "stream")
+    field(INP, "$(device):ChillerFaults.B14")
+    field(ZNAM, "OK")
+    field(ONAM, "FAULT")
+}
