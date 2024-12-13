@@ -19,6 +19,7 @@
 # Don't set your version to anything such as "test" that
 # could match a directory name.
 # ==========================================================
+STREAM_MODULE_VERSION=R2.8.9-1.2.2
 ASYN_MODULE_VERSION=R4.39-1.0.2
 
 # ==========================================================
@@ -34,6 +35,7 @@ ASYN_MODULE_VERSION=R4.39-1.0.2
 #
 # If your build fails, look for these paths in your build output
 # ==========================================================
+STREAM=$(EPICS_MODULES)/streamdevice/$(STREAM_MODULE_VERSION)
 ASYN=$(EPICS_MODULES)/asyn/$(ASYN_MODULE_VERSION)
 NIKOLA=$(TOP)/../..
 
