@@ -8,32 +8,33 @@ include $(TOP)/configure/CONFIG
 #=============================
 # Build the IOC application
 
-PROD_IOC = nikola
-# nikola.dbd will be created and installed
-DBD += nikola.dbd
+PROD_IOC = nikolaIOC
+# nikolaIOC.dbd will be created and installed
+DBD += nikolaIOC.dbd
 
 # nikola.dbd will be made up from these files:
-nikola_DBD += base.dbd
+nikolaIOC_DBD += base.dbd
 
 # Include dbd files from all support applications:
-#nikola_DBD += xxx.dbd
+nikolaIOC_DBD += nikola.dbd
+nikolaIOC_DBD += asyn.dbd
 
 # Add all the support libraries needed by this IOC
-nikola_LIBS += nikola
-nikola_LIBS += asyn
+nikolaIOC_LIBS += nikola
+nikolaIOC_LIBS += asyn
 
-# nikola_registerRecordDeviceDriver.cpp derives from nikola.dbd
-nikola_SRCS += nikola_registerRecordDeviceDriver.cpp
+# nikolaIOC_registerRecordDeviceDriver.cpp derives from nikolaIOC.dbd
+nikolaIOC_SRCS += nikolaIOC_registerRecordDeviceDriver.cpp
 
 # Build the main IOC entry point on workstation OSs.
-nikola_SRCS_DEFAULT += nikolaMain.cpp
-nikola_SRCS_vxWorks += -nil-
+nikolaIOC_SRCS_DEFAULT += nikolaIOCMain.cpp
+nikolaIOC_SRCS_vxWorks += -nil-
 
 # Add support from base/src/vxWorks if needed
-#nikola_OBJS_vxWorks += $(EPICS_BASE_BIN)/vxComLibrary
+#nikolaIOC_OBJS_vxWorks += $(EPICS_BASE_BIN)/vxComLibrary
 
 # Finally link to the EPICS Base libraries
-nikola_LIBS += $(EPICS_BASE_IOC_LIBS)
+nikolaIOC_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 #===========================
 
