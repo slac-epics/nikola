@@ -60,64 +60,56 @@ record(mbbiDirect, "$(device):ChillerStatus") {
 
 record(bi, "$(device):ChillerRunning") {
     field(DESC, "Chiller Running")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerStatus.B0")
+    field(INP, "$(device):ChillerStatus.B0 CP")
     field(ZNAM, "STOPPED")
     field(ONAM, "RUNNING")
 }
 
 record(bi, "$(device):RemoteOrLocal") {
     field(DESC, "Remote or Local")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerStatus.B1")
+    field(INP, "$(device):ChillerStatus.B1 CP")
     field(ZNAM, "LOCAL")
     field(ONAM, "REMOTE")
 }
 
 record(bi, "$(device):ChillerReady") {
     field(DESC, "Chiller Ready")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerStatus.B2")
+    field(INP, "$(device):ChillerStatus.B2 CP")
     field(ZNAM, "NOTREADY")
     field(ONAM, "READY")
 }
 
 record(bi, "$(device):TempLowAlarm") {
     field(DESC, "Temp Low Alarm")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerStatus.B3")
+    field(INP, "$(device):ChillerStatus.B3 CP")
     field(ZNAM, "Normal")
     field(ONAM, "Temp<SP-WIDTH")
 }
 
 record(bi, "$(device):TempHighAlarm") {
     field(DESC, "Temp High Alarm")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerStatus.B4")
+    field(INP, "$(device):ChillerStatus.B4 CP")
     field(ZNAM, "Normal")
     field(ONAM, "Temp>SP+WIDTH")
 }
 
 record(bi, "$(device):HeatingOrCooling") {
     field(DESC, "Heating or Cooling")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerStatus.B5")
+    field(INP, "$(device):ChillerStatus.B5 CP")
     field(ZNAM, "COOLING")
     field(ONAM, "HEATING")
 }
 
 record(bi, "$(device):SystemWarning") {
     field(DESC, "System Warning")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerStatus.B6")
+    field(INP, "$(device):ChillerStatus.B6 CP")
     field(ZNAM, "NONE")
     field(ONAM, "WARNING")
 }
 
 record(bi, "$(device):SystemAlarm") {
     field(DESC, "System Alarm")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerStatus.B7")
+    field(INP, "$(device):ChillerStatus.B7 CP")
     field(ZNAM, "NONE")
     field(ONAM, "ALARM")
 }
@@ -133,88 +125,77 @@ record(mbbiDirect, "$(device):ChillerFaults") {
 
 record(bi, "$(device):RTDFault") {
     field(DESC, "RTD Fault")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerFaults.B0")
+    field(INP, "$(device):ChillerFaults.B0 CP")
     field(ZNAM, "OK")
     field(ONAM, "FAULT")
 }
 
 record(bi, "$(device):TankLevelLow") {
     field(DESC, "Tank Level Low")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerFaults.B1")
+    field(INP, "$(device):ChillerFaults.B1 CP")
     field(ZNAM, "OK")
     field(ONAM, "FAULT")
 }
 
 record(bi, "$(device):VFDFault") {
     field(DESC, "VFD Fault")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerFaults.B2")
+    field(INP, "$(device):ChillerFaults.B2 CP")
     field(ZNAM, "OK")
     field(ONAM, "FAULT")
 }
 
 record(bi, "$(device):RTDAlarmWidth") {
     field(DESC, "RTD < > Alarm Width")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerFaults.B4")
+    field(INP, "$(device):ChillerFaults.B4 CP")
     field(ZNAM, "OK")
     field(ONAM, "FAULT")
 }
 
 record(bi, "$(device):TankLevelEmpty") {
     field(DESC, "Tank Level Empty")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerFaults.B5")
+    field(INP, "$(device):ChillerFaults.B5 CP")
     field(ZNAM, "OK")
     field(ONAM, "FAULT")
 }
 
 record(bi, "$(device):CoolantFlowLow") {
     field(DESC, "Coolant Flow Low")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerFaults.B7")
+    field(INP, "$(device):ChillerFaults.B7 CP")
     field(ZNAM, "OK")
     field(ONAM, "FAULT")
 }
 
 record(bi, "$(device):CoolantFlowHigh") {
     field(DESC, "Coolant Flow High")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerFaults.B8")
+    field(INP, "$(device):ChillerFaults.B8 CP")
     field(ZNAM, "OK")
     field(ONAM, "FAULT")
 }
 
 record(bi, "$(device):PCWFlowLow") {
     field(DESC, "PCW Flow Low")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerFaults.B9")
+    field(INP, "$(device):ChillerFaults.B9 CP")
     field(ZNAM, "OK")
     field(ONAM, "FAULT")
 }
 
 record(bi, "$(device):ResistivityHigh") {
     field(DESC, "Resistivity High")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerFaults.B11")
+    field(INP, "$(device):ChillerFaults.B11 CP")
     field(ZNAM, "OK")
     field(ONAM, "FAULT")
 }
 
 record(bi, "$(device):ResistivityLow") {
     field(DESC, "Resistivity Low")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerFaults.B12")
+    field(INP, "$(device):ChillerFaults.B12 CP")
     field(ZNAM, "OK")
     field(ONAM, "FAULT")
 }
 
 record(bi, "$(device):PressureSensor") {
     field(DESC, "Pressure Sensor Fault")
-    field(DTYP, "stream")
-    field(INP, "$(device):ChillerFaults.B14")
+    field(INP, "$(device):ChillerFaults.B14 CP")
     field(ZNAM, "OK")
     field(ONAM, "FAULT")
 }
