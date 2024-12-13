@@ -37,6 +37,7 @@ nikolaIOC_DBD += base.dbd
 # Include dbd files from all support applications:
 nikolaIOC_DBD += nikola.dbd
 nikolaIOC_DBD += stream.dbd
+nikolaIOC_DBD += drvAsynIPPort.dbd
 nikolaIOC_DBD += asyn.dbd
 
 # Add all the support libraries needed by this IOC
