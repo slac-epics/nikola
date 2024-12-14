@@ -18,9 +18,9 @@ dbLoadDatabase "dbd/nikolaIOC.dbd"
 nikolaIOC_registerRecordDeviceDriver pdbbase
 
 drvAsynIPPortConfigure( "P0", "$(DEVICE_PORT):22222", 0, 0, 0 )
-rateLimitInterposeInit("P0", 500)
 #asynSetTraceMask("P0", 0, "0x08")
 #asynSetTraceIOMask("P0", 0, "0x01")
+rateLimitInterposeInit("P0", "0.5")
 
 ## Load record instances
 dbLoadRecords("db/nikola.db","device=$(PV_BASE),port=P0")
