@@ -53,3 +53,6 @@ autosave/
 
 # Python
 __pycache__
+
+# gdb
+.gdb_history
