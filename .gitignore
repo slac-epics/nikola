@@ -50,3 +50,6 @@ autosave/
 *.exe
 *.out
 *.app
+
+# Python
+__pycache__
