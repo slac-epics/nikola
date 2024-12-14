@@ -29,14 +29,23 @@ class NikolaTstServer:
                 client_socket, client_address = server_socket.accept()
                 try:
                     print(f"Connection from {client_address}")
-                    
+                    running = True
                     # Receive the data in small chunks and echo it back
                     while True:
                         data = client_socket.recv(1024)
                         if data:
-                            print(f"Received: {data.decode()}")
-                            temp = nikolaCtr.read_temperature()
-                            temp = "{:.1f}\x0d".format(temp)
+                            if data == b"TEMP?\x0d":
+                                print(f"Received: {data.decode()}")
+                                temp = nikolaCtr.read_temperature()
+                                temp = "{:.1f}\x0d".format(temp)
+                            else:
+                                if running:
+                                    temp = "RUNNING\x0d"
+                                    running = False
+                                else:
+                                    temp = "STOPPED\x0d"
+                                    running = True
+                                    
                             print(temp)
                             client_socket.sendall(temp.encode())
                         else:
